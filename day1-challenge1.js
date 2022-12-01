@@ -2263,3 +2263,12 @@ const totalCalories = newArray.map(element => {
 console.log(totalCalories)
 
 console.log(Math.max(...totalCalories));
+
+
+// part two
+const max1 = Math.max(...totalCalories)
+const withoutMax1 = totalCalories.filter(number => number !== max1);
+const max2 = Math.max(...withoutMax1);
+const withoutMax2 = withoutMax1.filter(number => number !== max2)
+const max3 = Math.max(...withoutMax2);
+console.log(max1 + max2 + max3)
