@@ -2242,28 +2242,26 @@ const input =`18814
 7160
 6253
 `
-const groupByElves = input.split(/\n/)
+const groupByNewLine = input.split(/\n/)
 
 let lastIndex = 0;
-let newArray = [];
-groupByElves.forEach((element, index)=> {
+let elvesByCalories = [];
+groupByNewLine.forEach((element, index)=> {
   if (element === '') {
-    newArray.push(groupByElves.slice(lastIndex, index))
+    elvesByCalories.push(groupByNewLine.slice(lastIndex, index))
     lastIndex = index + 1;
   }
 })
-// console.log(newArray);
-const totalCalories = newArray.map(element => {
+
+const totalCalories = elvesByCalories.map(element => {
   let totalSingleElfCalories = 0;
   element.forEach(number => {
     totalSingleElfCalories += parseInt(number);
   })
   return totalSingleElfCalories;
 })
-console.log(totalCalories)
 
 console.log(Math.max(...totalCalories));
-
 
 // part two
 const max1 = Math.max(...totalCalories)
