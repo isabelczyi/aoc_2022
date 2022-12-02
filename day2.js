@@ -2550,4 +2550,90 @@ games.forEach(round => {
   }
 })
 
-console.log(points)
+// console.log(points)
+
+
+ // Part two
+const newDictionary = {
+  "A": "Rock",
+  "X": "lose",
+  "B": "Paper",
+  "Y": "draw",
+  "C": "Scissors",
+  "Z": "win"
+}
+
+// Rock: A and X (1)
+// Paper: B and Y (2)
+// Scissors: C and Z (3)
+
+// 0 if lost
+// 3 if draw
+// 6 if win
+
+let roundTwoPoints = 0;
+
+games.forEach(round => {
+  // draw
+  if (round[1] === "Y") {
+    roundTwoPoints += 3
+    switch (round[0]) {
+      case "A":
+        // if rock
+        roundTwoPoints += 1
+        break;
+      case "B":
+        // if paper
+        roundTwoPoints += 2
+        break;
+      case "C":
+        // if scissors
+        roundTwoPoints += 3
+        break;
+      default:
+        break;
+    }
+  }
+  // lose
+  if (round[1] === "X") {
+      switch (round[0]) {
+      case "A":
+        // if rock, lose with scissors so 3 points
+        roundTwoPoints += 3
+        break;
+      case "B":
+        // if paper, lose with rock so 1 points
+        roundTwoPoints += 1
+        break;
+      case "C":
+        // if scissors lose with paper so 2 points
+        roundTwoPoints += 2
+        break;
+      default:
+        break;
+    }
+  }
+
+  //win
+    if (round[1] === "Z") {
+      roundTwoPoints += 6;
+      switch (round[0]) {
+      case "A":
+        // if rock, win with paper so 2 points
+        roundTwoPoints += 2
+        break;
+      case "B":
+        // if paper, win with scissors so 3 points
+        roundTwoPoints += 3
+        break;
+      case "C":
+        // if scissors win with rock so 1 point
+        roundTwoPoints += 1
+        break;
+      default:
+        break;
+    }
+  }
+})
+
+console.log(roundTwoPoints)
