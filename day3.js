@@ -329,11 +329,49 @@ let priorityPoints = 0;
 onlyLetters.forEach((letter, index) => {
   if (letter.toUpperCase() === letter) {
     priorityPoints += (letter.charCodeAt() - 38);
-    console.log(`${index}: ${priorityPoints}`)
   } else {
     // lowercase
     priorityPoints += (letter.charCodeAt() - 96);
-    console.log(`${index}: ${priorityPoints}`)
   }
 })
-console.log(priorityPoints)
+// console.log(priorityPoints)
+
+
+let groupByN = (n, data) => {
+  let result = [];
+  for (let i = 0; i < data.length; i += n) result.push(data.slice(i, i + n));
+  return result;
+};
+
+const elfGroups = groupByN(3, groupByRucksack);
+
+
+const elfGroupLetters = []
+elfGroups.forEach((rucksacks, index) => {
+  const commonLettersFirstTwo = []
+  for (let i = 0; i < rucksacks[0].length; i++) {
+    if (rucksacks[1].includes(rucksacks[0][i])){
+      commonLettersFirstTwo.push(rucksacks[0][i]);
+    }
+  }
+
+  for (let i = 0; i < rucksacks[2].length; i++) {
+    if (commonLettersFirstTwo.includes(rucksacks[2][i]) && !elfGroupLetters.includes(index)){
+      elfGroupLetters.push(rucksacks[2][i]);
+      elfGroupLetters.push(index);
+    }
+  }
+})
+const onlyLettersForElfGroups = elfGroupLetters.filter(value => typeof value == 'string');
+
+console.log(onlyLettersForElfGroups.length)
+let priorityPointsElfGroup = 0;
+onlyLettersForElfGroups.forEach((letter, index) => {
+  if (letter.toUpperCase() === letter) {
+    priorityPointsElfGroup += (letter.charCodeAt() - 38);
+  } else {
+    // lowercase
+    priorityPointsElfGroup += (letter.charCodeAt() - 96);
+  }
+})
+console.log(priorityPointsElfGroup)
