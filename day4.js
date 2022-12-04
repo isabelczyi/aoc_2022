@@ -1037,4 +1037,14 @@ iterableRanges.forEach((pair, index) => {
   }
 })
 
-console.log(counter)
+let nonOverlapNumber = 0;
+iterableRanges.forEach((pair, index) => {
+  if (Number(pair[0][1]) < Number(pair[1][0])) {
+    nonOverlapNumber += 1
+  }
+  if (Number(pair[1][1] < Number(pair[0][0]))) {
+    nonOverlapNumber += 1
+  }
+})
+
+console.log(iterableRanges.length - nonOverlapNumber)
