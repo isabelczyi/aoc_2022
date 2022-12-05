@@ -517,19 +517,24 @@ const stacks = {
 
 const groupByNewLine = directions.split(/\n/);
 
-const numberOfBoxes  = Number(groupByNewLine[0].substring(groupByNewLine[0].indexOf('move') + 5, groupByNewLine[0].indexOf('move') + 7));
-const originStack  = groupByNewLine[0].substring(groupByNewLine[0].indexOf('from') + 5)[0];
-const destinationStack  = groupByNewLine[0].substring(groupByNewLine[0].indexOf('to') + 3)[0];
-stacks[destinationStack].push(...stacks[originStack].slice(-numberOfBoxes))
+// const numberOfBoxes  = Number(groupByNewLine[0].substring(groupByNewLine[0].indexOf('move') + 5, groupByNewLine[0].indexOf('move') + 7));
+// const originStack  = groupByNewLine[0].substring(groupByNewLine[0].indexOf('from') + 5)[0];
+// const destinationStack  = groupByNewLine[0].substring(groupByNewLine[0].indexOf('to') + 3)[0];
+// stacks[destinationStack].push(...stacks[originStack].slice(-numberOfBoxes))
+// stacks[originStack] = stacks[originStack].slice(0, stacks[originStack].length - numberOfBoxes);
 
-
+// console.log(groupByNewLine[0])
+// console.log(stacks[originStack])
+// console.log(stacks[destinationStack])
 
 groupByNewLine.forEach(line => {
   const numberOfBoxes  = Number(line.substring(line.indexOf('move') + 5, line.indexOf('move') + 7));
   const originStack  = line.substring(line.indexOf('from') + 5)[0];
   const destinationStack  = line.substring(line.indexOf('to') + 3)[0];
-  stacks[destinationStack].push(...stacks[originStack].slice(-numberOfBoxes).reverse())
+  stacks[destinationStack].push(...stacks[originStack].slice(-numberOfBoxes))
   stacks[originStack] = stacks[originStack].slice(0, stacks[originStack].length - numberOfBoxes);
 })
 
 console.log(stacks)
+// RWVWGQGFD
+// vrh
