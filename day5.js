@@ -531,10 +531,10 @@ groupByNewLine.forEach(line => {
   const numberOfBoxes  = Number(line.substring(line.indexOf('move') + 5, line.indexOf('move') + 7));
   const originStack  = line.substring(line.indexOf('from') + 5)[0];
   const destinationStack  = line.substring(line.indexOf('to') + 3)[0];
-  stacks[destinationStack].push(...stacks[originStack].slice(-numberOfBoxes))
+  stacks[destinationStack].push(...stacks[originStack].slice(-numberOfBoxes)) // add .reverse() for part one
   stacks[originStack] = stacks[originStack].slice(0, stacks[originStack].length - numberOfBoxes);
 })
 
 console.log(stacks)
 // RWVWGQGFD
-// vrh
+// RWLWGJGFD
