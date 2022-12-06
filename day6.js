@@ -9,7 +9,7 @@ function toWindows(inputArray, size) {
   )
 }
 
-const slidingWindowOfFour = toWindows(input, 4);
+const slidingWindowOfFourteen = toWindows(input, 14);
 
 
 function isUnique(str) {
@@ -17,7 +17,7 @@ function isUnique(str) {
 }
 
 const arrayStopper = []
-slidingWindowOfFour.forEach((group, index) => {
+slidingWindowOfFourteen.forEach((group, index) => {
   if (!arrayStopper.includes(index)){
     isUnique(group) ? arrayStopper.push(index) : null;
   }
@@ -25,7 +25,7 @@ slidingWindowOfFour.forEach((group, index) => {
 
 console.log(arrayStopper)
 
-// index 0 means 4 have been processed
+// index 0 means 14 have been processed
 // so add 4 to first.
 
-console.log(arrayStopper[0] + 4)
+console.log(arrayStopper[0] + 14)
