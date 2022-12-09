@@ -2042,6 +2042,7 @@ headCoordinates.forEach((coordinate, index) => {
   ((Math.abs(hy - ty) === 1) && (hx === tx)) ||
   (hx != tx && hy != ty && (Math.abs(hx - tx) === 1) && (Math.abs(hy - ty) === 1))
   ) {
+    tailCoordinates.push([tx,ty])
     return;
   }
 
@@ -2066,11 +2067,351 @@ headCoordinates.forEach((coordinate, index) => {
     tailCoordinates.push([newTx, ((ty + hy) / 2)]);
     return;
   }
+  console.log('there are others')
 
 })
 
 const stringifiedTailCoordinated = tailCoordinates.map(array => array.toString());
-// var myArray = [[0,0].toString(), [0,0].toString()];
+var myArray = [[0,0].toString(), [0,0].toString()];
 
 let unique = [...new Set(stringifiedTailCoordinated)];
 console.log(unique.length)
+
+
+// part two
+
+// const twoCoordinates = tailCoordinates;
+const threeCoordinates = [[0,0]];
+
+// console.log(tailCoordinates)
+
+tailCoordinates.forEach((coordinate, index) => {
+  const hx = coordinate[0];
+  const hy = coordinate[1];
+  const tx = threeCoordinates.at(-1)[0];
+  const ty = threeCoordinates.at(-1)[1];
+  if ((hx === tx && hy === ty) ||
+  ((Math.abs(hx - tx) === 1) && (hy === ty)) ||
+  ((Math.abs(hy - ty) === 1) && (hx === tx)) ||
+  (hx != tx && hy != ty && (Math.abs(hx - tx) === 1) && (Math.abs(hy - ty) === 1))
+  ) {
+    threeCoordinates.push([tx,ty])
+    return;
+  }
+
+  if (hx === tx) {
+    threeCoordinates.push([tx, ((ty + hy) / 2)]);
+
+    return;
+  }
+
+  if (hy === ty) {
+    threeCoordinates.push([((hx + tx) / 2), ty])
+
+    return;
+  }
+
+  if ((Math.abs(hy - ty) === 1)) {
+    const newTy = (hy > ty) ? ty + 1 : ty - 1;
+    threeCoordinates.push([((hx + tx) / 2), newTy]);
+    return;
+  }
+
+  if ((Math.abs(hx - tx) === 1)) {
+    const newTx = (hx > tx) ? tx + 1 : tx - 1;
+    threeCoordinates.push([newTx, ((ty + hy) / 2)]);
+    return;
+  }
+  threeCoordinates.push([((hx + tx) / 2),((ty + hy) / 2)])
+});
+
+const fourCoordinates = [[0,0]];
+threeCoordinates.forEach((coordinate, index) => {
+  const hx = coordinate[0];
+  const hy = coordinate[1];
+  const tx = fourCoordinates.at(-1)[0];
+  const ty = fourCoordinates.at(-1)[1];
+  if ((hx === tx && hy === ty) ||
+  ((Math.abs(hx - tx) === 1) && (hy === ty)) ||
+  ((Math.abs(hy - ty) === 1) && (hx === tx)) ||
+  (hx != tx && hy != ty && (Math.abs(hx - tx) === 1) && (Math.abs(hy - ty) === 1))
+  ) {
+    fourCoordinates.push([tx,ty])
+    return;
+  }
+
+  if (hx === tx) {
+    fourCoordinates.push([tx, ((ty + hy) / 2)]);
+
+    return;
+  }
+
+  if (hy === ty) {
+    fourCoordinates.push([((hx + tx) / 2), ty])
+
+    return;
+  }
+
+  if ((Math.abs(hy - ty) === 1)) {
+    const newTy = (hy > ty) ? ty + 1 : ty - 1;
+    fourCoordinates.push([((hx + tx) / 2), newTy]);
+    return;
+  }
+
+  if ((Math.abs(hx - tx) === 1)) {
+    const newTx = (hx > tx) ? tx + 1 : tx - 1;
+    fourCoordinates.push([newTx, ((ty + hy) / 2)]);
+    return;
+  }
+  fourCoordinates.push([((hx + tx) / 2),((ty + hy) / 2)])
+});
+// console.log(threeCoordinates[16])
+// console.log(fourCoordinates)
+const fiveCoordinates = [[0,0]];
+fourCoordinates.forEach((coordinate, index) => {
+  const hx = coordinate[0];
+  const hy = coordinate[1];
+  const tx = fiveCoordinates.at(-1)[0];
+  const ty = fiveCoordinates.at(-1)[1];
+  if ((hx === tx && hy === ty) ||
+  ((Math.abs(hx - tx) === 1) && (hy === ty)) ||
+  ((Math.abs(hy - ty) === 1) && (hx === tx)) ||
+  (hx != tx && hy != ty && (Math.abs(hx - tx) === 1) && (Math.abs(hy - ty) === 1))
+  ) {
+    fiveCoordinates.push([tx,ty])
+    return;
+  }
+
+  if (hx === tx) {
+    fiveCoordinates.push([tx, ((ty + hy) / 2)]);
+
+    return;
+  }
+
+  if (hy === ty) {
+    fiveCoordinates.push([((hx + tx) / 2), ty])
+
+    return;
+  }
+
+  if ((Math.abs(hy - ty) === 1)) {
+    const newTy = (hy > ty) ? ty + 1 : ty - 1;
+    fiveCoordinates.push([((hx + tx) / 2), newTy]);
+    return;
+  }
+
+  if ((Math.abs(hx - tx) === 1)) {
+    const newTx = (hx > tx) ? tx + 1 : tx - 1;
+    fiveCoordinates.push([newTx, ((ty + hy) / 2)]);
+    return;
+  }
+  fiveCoordinates.push([((hx + tx) / 2),((ty + hy) / 2)])
+});
+console.log(fiveCoordinates)
+const sixCoordinates = [[0,0]];
+fiveCoordinates.forEach((coordinate, index) => {
+  const hx = coordinate[0];
+  const hy = coordinate[1];
+  const tx = sixCoordinates.at(-1)[0];
+  const ty = sixCoordinates.at(-1)[1];
+  if ((hx === tx && hy === ty) ||
+  ((Math.abs(hx - tx) === 1) && (hy === ty)) ||
+  ((Math.abs(hy - ty) === 1) && (hx === tx)) ||
+  (hx != tx && hy != ty && (Math.abs(hx - tx) === 1) && (Math.abs(hy - ty) === 1))
+  ) {
+    sixCoordinates.push([tx,ty])
+    return;
+  }
+
+  if (hx === tx) {
+    sixCoordinates.push([tx, ((ty + hy) / 2)]);
+
+    return;
+  }
+
+  if (hy === ty) {
+    sixCoordinates.push([((hx + tx) / 2), ty])
+
+    return;
+  }
+
+  if ((Math.abs(hy - ty) === 1)) {
+    const newTy = (hy > ty) ? ty + 1 : ty - 1;
+    sixCoordinates.push([((hx + tx) / 2), newTy]);
+    return;
+  }
+
+  if ((Math.abs(hx - tx) === 1)) {
+    const newTx = (hx > tx) ? tx + 1 : tx - 1;
+    sixCoordinates.push([newTx, ((ty + hy) / 2)]);
+    return;
+  }
+  sixCoordinates.push([((hx + tx) / 2),((ty + hy) / 2)])
+});
+const sevenCoordinates = [[0,0]];
+sixCoordinates.forEach((coordinate, index) => {
+  const hx = coordinate[0];
+  const hy = coordinate[1];
+  const tx = sevenCoordinates.at(-1)[0];
+  const ty = sevenCoordinates.at(-1)[1];
+  if ((hx === tx && hy === ty) ||
+  ((Math.abs(hx - tx) === 1) && (hy === ty)) ||
+  ((Math.abs(hy - ty) === 1) && (hx === tx)) ||
+  (hx != tx && hy != ty && (Math.abs(hx - tx) === 1) && (Math.abs(hy - ty) === 1))
+  ) {
+    sevenCoordinates.push([tx,ty])
+    return;
+  }
+
+  if (hx === tx) {
+    sevenCoordinates.push([tx, ((ty + hy) / 2)]);
+
+    return;
+  }
+
+  if (hy === ty) {
+    sevenCoordinates.push([((hx + tx) / 2), ty])
+
+    return;
+  }
+
+  if ((Math.abs(hy - ty) === 1)) {
+    const newTy = (hy > ty) ? ty + 1 : ty - 1;
+    sevenCoordinates.push([((hx + tx) / 2), newTy]);
+    return;
+  }
+
+  if ((Math.abs(hx - tx) === 1)) {
+    const newTx = (hx > tx) ? tx + 1 : tx - 1;
+    sevenCoordinates.push([newTx, ((ty + hy) / 2)]);
+    return;
+  }
+  sevenCoordinates.push([((hx + tx) / 2),((ty + hy) / 2)])
+});
+const eightCoordinates = [[0,0]];
+sevenCoordinates.forEach((coordinate, index) => {
+  const hx = coordinate[0];
+  const hy = coordinate[1];
+  const tx = eightCoordinates.at(-1)[0];
+  const ty = eightCoordinates.at(-1)[1];
+  if ((hx === tx && hy === ty) ||
+  ((Math.abs(hx - tx) === 1) && (hy === ty)) ||
+  ((Math.abs(hy - ty) === 1) && (hx === tx)) ||
+  (hx != tx && hy != ty && (Math.abs(hx - tx) === 1) && (Math.abs(hy - ty) === 1))
+  ) {
+    eightCoordinates.push([tx,ty])
+    return;
+  }
+
+  if (hx === tx) {
+    eightCoordinates.push([tx, ((ty + hy) / 2)]);
+
+    return;
+  }
+
+  if (hy === ty) {
+    eightCoordinates.push([((hx + tx) / 2), ty])
+
+    return;
+  }
+
+  if ((Math.abs(hy - ty) === 1)) {
+    const newTy = (hy > ty) ? ty + 1 : ty - 1;
+    eightCoordinates.push([((hx + tx) / 2), newTy]);
+    return;
+  }
+
+  if ((Math.abs(hx - tx) === 1)) {
+    const newTx = (hx > tx) ? tx + 1 : tx - 1;
+    eightCoordinates.push([newTx, ((ty + hy) / 2)]);
+    return;
+  }
+  eightCoordinates.push([((hx + tx) / 2),((ty + hy) / 2)])
+});
+const nineCoordinates = [[0,0]];
+eightCoordinates.forEach((coordinate, index) => {
+  const hx = coordinate[0];
+  const hy = coordinate[1];
+  const tx = nineCoordinates.at(-1)[0];
+  const ty = nineCoordinates.at(-1)[1];
+  if ((hx === tx && hy === ty) ||
+  ((Math.abs(hx - tx) === 1) && (hy === ty)) ||
+  ((Math.abs(hy - ty) === 1) && (hx === tx)) ||
+  (hx != tx && hy != ty && (Math.abs(hx - tx) === 1) && (Math.abs(hy - ty) === 1))
+  ) {
+    nineCoordinates.push([tx,ty])
+    return;
+  }
+
+  if (hx === tx) {
+    nineCoordinates.push([tx, ((ty + hy) / 2)]);
+
+    return;
+  }
+
+  if (hy === ty) {
+    nineCoordinates.push([((hx + tx) / 2), ty])
+
+    return;
+  }
+
+  if ((Math.abs(hy - ty) === 1)) {
+    const newTy = (hy > ty) ? ty + 1 : ty - 1;
+    nineCoordinates.push([((hx + tx) / 2), newTy]);
+    return;
+  }
+
+  if ((Math.abs(hx - tx) === 1)) {
+    const newTx = (hx > tx) ? tx + 1 : tx - 1;
+    nineCoordinates.push([newTx, ((ty + hy) / 2)]);
+    return;
+  }
+  nineCoordinates.push([((hx + tx) / 2),((ty + hy) / 2)])
+});
+
+const tenCoordinates = [[0,0]];
+nineCoordinates.forEach((coordinate, index) => {
+  const hx = coordinate[0];
+  const hy = coordinate[1];
+  const tx = tenCoordinates.at(-1)[0];
+  const ty = tenCoordinates.at(-1)[1];
+  if ((hx === tx && hy === ty) ||
+  ((Math.abs(hx - tx) === 1) && (hy === ty)) ||
+  ((Math.abs(hy - ty) === 1) && (hx === tx)) ||
+  (hx != tx && hy != ty && (Math.abs(hx - tx) === 1) && (Math.abs(hy - ty) === 1))
+  ) {
+    tenCoordinates.push([tx,ty])
+    return;
+  }
+
+  if (hx === tx) {
+    tenCoordinates.push([tx, ((ty + hy) / 2)]);
+
+    return;
+  }
+
+  if (hy === ty) {
+    tenCoordinates.push([((hx + tx) / 2), ty])
+
+    return;
+  }
+
+  if ((Math.abs(hy - ty) === 1)) {
+    const newTy = (hy > ty) ? ty + 1 : ty - 1;
+    tenCoordinates.push([((hx + tx) / 2), newTy]);
+    return;
+  }
+
+  if ((Math.abs(hx - tx) === 1)) {
+    const newTx = (hx > tx) ? tx + 1 : tx - 1;
+    tenCoordinates.push([newTx, ((ty + hy) / 2)]);
+    return;
+  }
+  tenCoordinates.push([((hx + tx) / 2),((ty + hy) / 2)])
+});
+
+const stringifiedNineCoordinates = tenCoordinates.map(array => array.toString());
+
+const uniqueNinecoordinates = [...new Set(stringifiedNineCoordinates)];
+console.log(uniqueNinecoordinates.length)
+// i will clean this up another time i'm just very excited i did it lmao
